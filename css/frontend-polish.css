@@ -9,6 +9,38 @@
   line-height: 1.55;
 }
 
+.trend-card .card-topline {
+  align-items: flex-start;
+}
+
+.trend-card .confidence-pill {
+  flex: 0 0 auto;
+  width: 58px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  flex-direction: column;
+  gap: 1px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.05;
+  font-size: 0;
+}
+
+.trend-card .confidence-pill::first-line {
+  font-size: 1rem;
+}
+
+.trend-card .confidence-pill {
+  font-size: 0.74rem;
+}
+
+.trend-card .confidence-pill.high,
+.trend-card .confidence-pill.medium,
+.trend-card .confidence-pill.low {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
 .compare-table {
   display: grid;
   gap: 0;
