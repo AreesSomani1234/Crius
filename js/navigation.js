@@ -2,6 +2,7 @@ window.CriusNavigation = {
   links: [
     { label: "Home", href: "index.html", page: "home" },
     { label: "Search", href: "pages/search.html", page: "search" },
+    { label: "Smart Search", href: "pages/smart-search.html", page: "smart-search" },
     { label: "Watchlist", href: "pages/watchlist.html", page: "watchlist" },
     { label: "Hot Stocks", href: "pages/hot-stocks.html", page: "hot-stocks" },
     { label: "Articles", href: "pages/articles.html", page: "articles" },
