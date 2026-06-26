@@ -38,7 +38,9 @@ window.CriusNavigation = {
     }
 
     if (footer) {
-      footer.innerHTML = "<p>Crius is an educational frontend prototype. AI-generated outputs are not financial advice.</p>";
+      footer.innerHTML = `
+        <p><strong>Disclaimer:</strong> Crius provides educational stock research only and does not provide financial advice. Prototype scores, AI takes, projections, and charts are illustrative mock outputs and should not be used as investment recommendations.</p>
+      `;
     }
   }
 };
