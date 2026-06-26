@@ -16,30 +16,51 @@ window.CriusStocks = {
     const min = Math.min(...points);
     const max = Math.max(...points);
     const range = max - min || 1;
-    const width = 600;
-    const height = 250;
-    const padX = 28;
-    const padY = 28;
-    const plotW = width - padX * 2;
-    const plotH = height - padY * 2;
+    const width = 640;
+    const height = 320;
+    const padLeft = 64;
+    const padRight = 34;
+    const padTop = 34;
+    const padBottom = 54;
+    const plotW = width - padLeft - padRight;
+    const plotH = height - padTop - padBottom;
     const coords = points.map((point, index) => {
-      const x = padX + (index / (points.length - 1)) * plotW;
-      const y = padY + plotH - ((point - min) / range) * plotH;
+      const x = padLeft + (index / (points.length - 1)) * plotW;
+      const y = padTop + plotH - ((point - min) / range) * plotH;
       return { x, y, point };
     });
     const line = coords.map(({ x, y }) => `${x},${y}`).join(" ");
-    const area = `${padX},${height - padY} ${line} ${width - padX},${height - padY}`;
-    const grid = [0.25, 0.5, 0.75].map((step) => {
-      const y = padY + plotH * step;
-      return `<line class="chart-grid-line" x1="${padX}" y1="${y}" x2="${width - padX}" y2="${y}"></line>`;
+    const area = `${padLeft},${height - padBottom} ${line} ${width - padRight},${height - padBottom}`;
+    const yTicks = [max, min + range * 0.5, min];
+    const grid = yTicks.map((value) => {
+      const y = padTop + plotH - ((value - min) / range) * plotH;
+      return `
+        <line class="chart-grid-line" x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}"></line>
+        <text class="chart-axis-label y-axis-label" x="${padLeft - 12}" y="${y + 4}">$${value.toFixed(0)}</text>
+      `;
     }).join("");
-    const labels = coords.map(({ x, y, point }, index) => `
-      <g class="chart-point" tabindex="0">
-        <circle class="chart-dot" cx="${x}" cy="${y}" r="6"></circle>
-        <circle class="chart-hit-area" cx="${x}" cy="${y}" r="18"></circle>
-        <text class="chart-tooltip" x="${x}" y="${Math.max(18, y - 14)}">${index === coords.length - 1 ? "Now" : `P${index + 1}`}: $${point.toFixed(2)}</text>
-      </g>
-    `).join("");
+    const xLabels = [
+      { label: "Start", index: 0 },
+      { label: "Mid", index: Math.floor((coords.length - 1) / 2) },
+      { label: "Now", index: coords.length - 1 }
+    ].map(({ label, index }) => `<text class="chart-axis-label x-axis-label" x="${coords[index].x}" y="${height - 18}">${label}</text>`).join("");
+    const labels = coords.map(({ x, y, point }, index) => {
+      const label = index === coords.length - 1 ? "Now" : `Point ${index + 1}`;
+      const tooltipWidth = 108;
+      const tooltipHeight = 30;
+      const boxX = Math.min(Math.max(x - tooltipWidth / 2, padLeft), width - padRight - tooltipWidth);
+      const boxY = Math.max(y - 44, padTop + 6);
+      return `
+        <g class="chart-point" tabindex="0">
+          <circle class="chart-hit-area" cx="${x}" cy="${y}" r="19"></circle>
+          <circle class="chart-dot" cx="${x}" cy="${y}" r="6"></circle>
+          <g class="chart-tooltip-group">
+            <rect class="chart-tooltip-box" x="${boxX}" y="${boxY}" width="${tooltipWidth}" height="${tooltipHeight}" rx="8"></rect>
+            <text class="chart-tooltip" x="${boxX + 10}" y="${boxY + 20}">${label}: $${point.toFixed(2)}</text>
+          </g>
+        </g>
+      `;
+    }).join("");
 
     return `
       <div class="chart-toolbar">
@@ -49,9 +70,13 @@ window.CriusStocks = {
           <button class="chart-tab active" type="button">1M</button>
           <button class="chart-tab" type="button">1Y</button>
         </div>
+        <div class="chart-actions" aria-label="Chart zoom controls">
+          <button class="chart-action" type="button" data-chart-zoom="out">− Zoom</button>
+          <button class="chart-action" type="button" data-chart-zoom="in">+ Zoom</button>
+        </div>
         <div class="chart-change ${stock.changePercent >= 0 ? "positive-text" : "negative-text"}">${stock.changePercent >= 0 ? "+" : ""}${stock.changePercent.toFixed(2)}%</div>
       </div>
-      <svg class="chart-surface interactive-chart" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-label="${stock.ticker} mock price trend chart">
+      <svg class="chart-surface interactive-chart" viewBox="0 0 ${width} ${height}" data-base-viewbox="0 0 ${width} ${height}" data-zoomed-viewbox="${padLeft - 12} ${padTop - 10} ${plotW + 32} ${plotH + 84}" aria-label="${stock.ticker} mock price trend chart">
         <defs>
           <linearGradient id="chartLineGradient-${stock.ticker}" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0%" stop-color="var(--blue)"></stop>
@@ -63,6 +88,9 @@ window.CriusStocks = {
           </linearGradient>
         </defs>
         ${grid}
+        <text class="chart-axis-title y-axis-title" x="18" y="${height / 2}" transform="rotate(-90 18 ${height / 2})">Price</text>
+        <text class="chart-axis-title x-axis-title" x="${width / 2}" y="${height - 4}">Mock time range</text>
+        ${xLabels}
         <polygon class="chart-area" points="${area}" fill="url(#chartAreaGradient-${stock.ticker})"></polygon>
         <polyline class="chart-line" points="${line}" fill="none" stroke="url(#chartLineGradient-${stock.ticker})" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></polyline>
         ${labels}
@@ -73,6 +101,27 @@ window.CriusStocks = {
         <span>Projected <strong>$${stock.projectedPrice.toFixed(2)}</strong></span>
       </div>
     `;
+  },
+
+  bindChartControls() {
+    const chart = document.querySelector(".interactive-chart");
+    if (!chart) return;
+
+    document.querySelectorAll("[data-chart-zoom]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const zoomIn = button.dataset.chartZoom === "in";
+        chart.setAttribute("viewBox", zoomIn ? chart.dataset.zoomedViewbox : chart.dataset.baseViewbox);
+        document.querySelectorAll("[data-chart-zoom]").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
+
+    document.querySelectorAll(".chart-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".chart-tab").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
   },
 
   renderDetail() {
@@ -124,5 +173,6 @@ window.CriusStocks = {
         </div>
       </section>
     `;
+    this.bindChartControls();
   }
 };
