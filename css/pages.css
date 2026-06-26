@@ -112,6 +112,10 @@
   padding: clamp(24px, 4vw, 46px);
 }
 
+.page-hero + * {
+  margin-top: 24px;
+}
+
 .page-hero h1 {
   font-size: clamp(2.4rem, 5vw, 4.8rem);
 }
@@ -123,7 +127,7 @@
 }
 
 .search-option {
-  min-height: 260px;
+  min-height: 240px;
   padding: 28px;
   border-radius: var(--radius-xl);
 }
@@ -220,7 +224,6 @@
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
   gap: 18px;
   align-items: start;
-  margin-top: 20px;
 }
 
 .profile-card {
@@ -249,4 +252,8 @@
   padding: 16px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.055);
+}
+
+.header-actions {
+  display: none;
 }
