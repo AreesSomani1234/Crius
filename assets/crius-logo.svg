@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 170" role="img" aria-label="Crius logo">
+  <rect width="420" height="170" fill="none"/>
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M64 72 C112 70 152 54 198 24 L222 84 L246 8 L275 64 H332" stroke="#76f056" stroke-width="16"/>
+    <path d="M64 100 C116 98 164 76 204 44 L225 125 L252 66 L277 88 H332" stroke="#f5f7fa" stroke-width="14"/>
+    <path d="M64 122 C130 120 172 94 204 68" stroke="#d7d9dc" stroke-width="12"/>
+  </g>
+  <g fill="#f7f9fb" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="500" letter-spacing="18">
+    <text x="108" y="158">CIRUS</text>
+  </g>
+  <line x1="18" y1="140" x2="58" y2="140" stroke="#76f056" stroke-width="4"/>
+  <line x1="356" y1="140" x2="398" y2="140" stroke="#76f056" stroke-width="4"/>
+</svg>
