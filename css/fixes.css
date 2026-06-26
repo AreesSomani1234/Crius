@@ -103,7 +103,11 @@
 }
 
 .chart-card {
-  min-height: 560px;
+  min-height: auto;
+}
+
+.chart-card .section-heading {
+  margin-bottom: 14px;
 }
 
 .chart-toolbar,
@@ -116,8 +120,8 @@
 
 .chart-toolbar {
   justify-content: space-between;
-  gap: 16px;
-  margin: 10px 0 16px;
+  gap: 12px;
+  margin: 8px 0 12px;
 }
 
 .chart-tabs,
@@ -129,7 +133,7 @@
 .chart-action {
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 8px 12px;
+  padding: 7px 11px;
   background: rgba(255, 255, 255, 0.06);
   color: var(--muted-strong);
   font-weight: 800;
@@ -149,13 +153,11 @@
 }
 
 .interactive-chart {
-  height: 350px;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.075);
-  border-radius: var(--radius-md);
-  background:
-    radial-gradient(circle at 70% 30%, rgba(52, 226, 138, 0.12), transparent 26%),
-    rgba(255, 255, 255, 0.025);
+  height: 285px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--green);
   overflow: visible;
 }
@@ -167,7 +169,7 @@
 }
 
 .chart-area {
-  opacity: 0.95;
+  opacity: 0.75;
 }
 
 .chart-line {
@@ -238,28 +240,28 @@
 }
 
 .chart-axis-title {
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
 .chart-stats-row {
   justify-content: space-between;
-  gap: 12px;
-  margin-top: 14px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .chart-stats-row span {
   flex: 1;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--muted);
 }
 
 .chart-stats-row strong {
   display: block;
-  margin-top: 4px;
+  margin-top: 3px;
   color: var(--text);
 }
 
