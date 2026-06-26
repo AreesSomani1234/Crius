@@ -1,0 +1,20 @@
+.profile-panel .tag-row {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.profile-panel .tag-row + .button {
+  margin-top: 2px;
+}
+
+.profile-panel .button {
+  width: fit-content;
+}
+
+.profile-summary-card .tag-row {
+  margin-bottom: 0;
+}
+
+.profile-actions .button {
+  width: auto;
+}
