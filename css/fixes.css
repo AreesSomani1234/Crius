@@ -102,6 +102,103 @@
   align-items: flex-start;
 }
 
+.report-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.report-overview h2 {
+  margin-bottom: 10px;
+}
+
+.report-score-card {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 20px;
+}
+
+.report-score-card span,
+.report-card-top span,
+.competitor-card span {
+  color: var(--muted);
+}
+
+.report-score-card strong {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.report-card {
+  padding: 18px;
+}
+
+.report-card-top,
+.competitor-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.report-card-top {
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.report-card p {
+  margin-bottom: 0;
+  color: var(--muted-strong);
+  line-height: 1.55;
+}
+
+.mini-score {
+  height: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mini-score span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+}
+
+.competitor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.competitor-card {
+  align-items: center;
+  padding: 18px;
+}
+
+.competitor-card strong,
+.competitor-card span {
+  display: block;
+}
+
+.final-verdict h2 {
+  margin-bottom: 12px;
+}
+
+.final-verdict p {
+  max-width: 920px;
+  line-height: 1.65;
+}
+
 .chart-card {
   min-height: auto;
 }
@@ -265,11 +362,14 @@
 }
 
 @media (max-width: 1120px) {
-  .hot-panel {
+  .hot-panel,
+  .report-overview {
     grid-template-columns: 1fr;
   }
 
-  .hot-panel .trend-grid {
+  .hot-panel .trend-grid,
+  .report-grid,
+  .competitor-grid {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
 }
@@ -293,7 +393,9 @@
     overflow-x: auto;
   }
 
-  .hot-panel .trend-grid {
+  .hot-panel .trend-grid,
+  .report-grid,
+  .competitor-grid {
     grid-template-columns: 1fr;
   }
 
