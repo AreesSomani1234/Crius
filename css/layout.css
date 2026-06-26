@@ -60,24 +60,18 @@ p {
 }
 
 .page-shell {
-  padding: 14px 0 60px;
+  padding: 0 0 60px;
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 20;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 18px;
   align-items: center;
-  margin-bottom: 16px;
-  padding: 16px 0 18px;
-  background:
-    radial-gradient(circle at 10% 0%, rgba(74, 168, 255, 0.18), transparent 34%),
-    radial-gradient(circle at 90% 0%, rgba(169, 135, 255, 0.16), transparent 34%),
-    rgba(7, 13, 22, 0.86);
-  backdrop-filter: blur(18px);
+  margin-bottom: 24px;
+  padding: 18px 0 0;
 }
 
 .site-footer {
