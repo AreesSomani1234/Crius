@@ -1,0 +1,119 @@
+.smart-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.smart-input-grid.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.smart-field {
+  display: grid;
+  gap: 10px;
+  color: var(--muted-strong);
+  font-weight: 800;
+}
+
+.smart-field strong {
+  color: var(--green);
+}
+
+.smart-field input,
+.smart-field select,
+.money-row input,
+.money-row select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.065);
+  color: var(--text);
+  outline: 0;
+}
+
+.smart-field select,
+.money-row select {
+  color-scheme: dark;
+}
+
+.smart-field select option,
+.money-row select option {
+  background: #111821;
+  color: var(--text);
+}
+
+.money-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: 10px;
+}
+
+.choice-grid-wide,
+.sector-choice-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.smart-helper {
+  margin-top: 12px;
+}
+
+.smart-check-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.055);
+  color: var(--text);
+  font-weight: 800;
+}
+
+.smart-check-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+
+.wizard-action-group {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.wizard-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.form-error {
+  margin: 12px 0;
+  color: var(--red);
+  font-weight: 800;
+}
+
+.smart-summary {
+  padding: 18px;
+  margin-top: 16px;
+}
+
+.smart-result-summary {
+  border-color: rgba(52, 226, 138, 0.32);
+}
+
+@media (max-width: 860px) {
+  .smart-input-grid,
+  .choice-grid-wide,
+  .sector-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-actions,
+  .wizard-action-group {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
