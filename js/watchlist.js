@@ -34,8 +34,11 @@ window.CriusWatchlist = {
     const table = document.querySelector("#watchlistTable");
     const count = document.querySelector("#watchlistCount");
     const empty = document.querySelector("#watchlistEmpty");
+    const discover = document.querySelector("#watchlistDiscover");
     const query = (document.querySelector("#watchlistSearch")?.value || "").toLowerCase();
-    const stocks = data.stocks.filter((stock) => `${stock.ticker} ${stock.company} ${stock.sector}`.toLowerCase().includes(query));
+    const favorites = ui.getFavorites();
+    const favoriteStocks = data.stocks.filter((stock) => favorites.includes(stock.ticker));
+    const stocks = favoriteStocks.filter((stock) => `${stock.ticker} ${stock.company} ${stock.sector}`.toLowerCase().includes(query));
 
     if (table) {
       table.innerHTML = stocks.map((stock) => `
@@ -46,8 +49,9 @@ window.CriusWatchlist = {
           <div class="watchlist-cell stock-risk"><strong>${stock.risk}</strong><span>${stock.status}</span></div>
         </a>
       `).join("");
-      count.textContent = `Showing ${stocks.length} stocks`;
+      count.textContent = favorites.length ? `Showing ${stocks.length} of ${favoriteStocks.length} watchlist stocks` : "Your watchlist is empty";
       empty.hidden = stocks.length > 0;
+      empty.textContent = favorites.length ? "No watchlist stocks match your search." : "Your watchlist is empty. Add stocks from Smart Search, Hot Stocks, or Stock Search.";
     }
 
     const previous = document.querySelector("#previousSearches");
@@ -60,6 +64,13 @@ window.CriusWatchlist = {
           <div class="ticker-row">${item.tickers.map((ticker) => `<span class="ticker-pill">${ticker}</span>`).join("")}</div>
         </article>
       `).join("");
+    }
+
+    if (discover) {
+      const ideas = data.stocks.filter((stock) => !favorites.includes(stock.ticker)).slice(0, 4);
+      discover.innerHTML = ideas.length
+        ? ideas.map((stock) => ui.trendCard(stock, `stock-detail.html?ticker=${stock.ticker}`)).join("")
+        : `<p class="empty-state">You already have every prototype stock in your watchlist.</p>`;
     }
   }
 };
