@@ -61,7 +61,7 @@ The project is intentionally modular even though it is still plain HTML, CSS, an
 
 ## Pages Included
 
-- `index.html` - dashboard homepage with hero, watchlist carousel, hot stocks, top articles, and persistent navigation
+- `index.html` - dashboard homepage with hero, watchlist carousel, hot stocks, top articles, and shared top navigation
 - `pages/search.html` - search landing page with Smart Search and Stock Search entry points
 - `pages/stock-search.html` - regular stock search with mock autocomplete-style results
 - `pages/smart-search.html` - skippable multi-step AI matching wizard with mock recommendations

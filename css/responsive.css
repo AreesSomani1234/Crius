@@ -13,10 +13,6 @@
 }
 
 @media (max-width: 860px) {
-  body {
-    padding-bottom: 96px;
-  }
-
   .site-header {
     grid-template-columns: 1fr auto;
   }
@@ -48,21 +44,12 @@
     flex-direction: column;
   }
 
-  .bottom-nav {
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-
-  .bottom-nav a {
-    min-width: 82px;
-  }
 }
 
 @media (max-width: 560px) {
   .page-shell,
   .site-header,
-  .site-footer,
-  .bottom-nav {
+  .site-footer {
     width: min(100% - 22px, var(--content));
   }
 

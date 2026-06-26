@@ -9,7 +9,6 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  padding-bottom: 86px;
   color: var(--text);
   background:
     radial-gradient(circle at 15% -5%, rgba(74, 168, 255, 0.24), transparent 28%),
@@ -55,8 +54,7 @@ p {
 
 .page-shell,
 .site-header,
-.site-footer,
-.bottom-nav {
+.site-footer {
   width: min(100% - 32px, var(--content));
   margin-inline: auto;
 }
