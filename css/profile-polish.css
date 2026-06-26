@@ -28,6 +28,10 @@
   border-top: 1px solid var(--border);
 }
 
+.sector-editor[hidden] {
+  display: none;
+}
+
 .sector-option {
   display: flex;
   align-items: center;
