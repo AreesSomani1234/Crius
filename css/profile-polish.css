@@ -1,10 +1,10 @@
 .profile-panel .tag-row {
   margin-top: 0;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .profile-panel .tag-row + .button {
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .profile-panel .button {
@@ -21,35 +21,52 @@
 
 .sector-editor {
   display: grid;
-  gap: 10px;
-  margin-top: 18px;
-  padding-top: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
   border-top: 1px solid var(--border);
 }
 
 .sector-option {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 9px;
+  min-height: 40px;
+  padding: 8px 10px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.04);
   color: var(--muted-strong);
+  font-size: 0.92rem;
   font-weight: 800;
 }
 
 .sector-option input {
   accent-color: var(--green);
+  transform: scale(0.95);
 }
 
 .sector-editor-actions {
+  grid-column: 1 / -1;
   display: flex;
   gap: 10px;
-  margin-top: 6px;
+  margin-top: 4px;
+}
+
+.sector-editor-actions .button {
+  padding: 11px 15px;
+}
+
+#editSectorsButton[hidden] {
+  display: none;
 }
 
 @media (max-width: 560px) {
+  .sector-editor {
+    grid-template-columns: 1fr;
+  }
+
   .sector-editor-actions {
     flex-direction: column;
   }
