@@ -4,61 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crius | Hot Stocks</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
-  <body data-page="hot-stocks">
-    <header class="site-header">
-      <a class="brand" href="../index.html" aria-label="Crius home">
-        <span class="brand-mark">C</span>
-        <span>Crius</span>
-      </a>
-      <nav class="top-nav" aria-label="Main navigation">
-        <a href="../index.html">Dashboard</a>
-        <a href="watchlist.html">Watchlist</a>
-        <a class="active" href="hot-stocks.html">Hot Stocks</a>
-        <a href="articles.html">Articles</a>
-      </nav>
-    </header>
-
+  <body data-page="hot-stocks" data-root="..">
+    <header class="site-header" id="siteHeader"></header>
     <main class="page-shell">
-      <section class="page-hero glass-card">
+      <section class="page-hero">
         <div>
-          <p class="eyebrow">AI-curated opportunity radar</p>
-          <h1>Current Trending Stocks</h1>
-          <p>
-            A larger mock list of stocks gaining attention from momentum,
-            growth narratives, risk shifts, and investor interest.
-          </p>
+          <p class="eyebrow">AI curated</p>
+          <h1>Hot Stocks</h1>
+          <p>Filter current momentum ideas by sector, market cap, and time frame. Favorite buttons use mock browser state.</p>
         </div>
         <div class="search-box">
           <label for="hotStocksSearch">Search hot stocks</label>
-          <input id="hotStocksSearch" type="search" placeholder="Search ticker, company, or theme" />
+          <input id="hotStocksSearch" type="search" placeholder="Search ticker, sector, or AI tag" />
         </div>
       </section>
-
       <section class="section-block">
-        <div class="section-heading compact">
-          <div>
-            <h2>AI-Curated Trending List</h2>
-            <p id="hotStocksCount">Showing all hot stocks</p>
-          </div>
+        <div class="filter-bar">
+          <div class="filter-control"><label for="sectorFilter">Sector</label><select id="sectorFilter"><option>All</option><option>Semiconductors</option><option>Cloud Software</option><option>AI Software</option><option>Consumer Technology</option></select></div>
+          <div class="filter-control"><label for="capFilter">Market cap</label><select id="capFilter"><option>All</option><option>Mega cap</option><option>Large cap</option></select></div>
+          <div class="filter-control"><label>Time frame</label><select><option>Today</option><option>This week</option><option>This month</option></select></div>
         </div>
-        <div class="trending-grid wide" id="hotStocksGrid"></div>
-        <p class="empty-state" id="hotStocksEmpty" hidden>No trending stocks match that search.</p>
+        <div class="section-heading"><div><h2>AI-Curated Trending Stocks</h2><p id="hotStocksCount">Loading trends</p></div><span class="ticker-pill">Page 1 of 3</span></div>
+        <div class="trend-grid wide" id="hotStocksGrid"></div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>Mock favorites are stored in this browser only. Not financial advice.</p>
-    </footer>
-
-    <script src="../js/data.js"></script>
-    <script src="../js/app.js"></script>
+    <nav class="bottom-nav" id="bottomNav"></nav>
+    <footer class="site-footer" id="siteFooter"></footer>
+    <script src="../js/mockData.js"></script><script src="../js/ui.js"></script><script src="../js/navigation.js"></script><script src="../js/watchlist.js"></script><script src="../js/search.js"></script><script src="../js/smart-search.js"></script><script src="../js/stocks.js"></script><script src="../js/articles.js"></script><script src="../js/app.js"></script>
   </body>
 </html>

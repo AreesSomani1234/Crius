@@ -3,62 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crius | Articles Top 100</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <title>Crius | Articles</title>
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
-  <body data-page="articles">
-    <header class="site-header">
-      <a class="brand" href="../index.html" aria-label="Crius home">
-        <span class="brand-mark">C</span>
-        <span>Crius</span>
-      </a>
-      <nav class="top-nav" aria-label="Main navigation">
-        <a href="../index.html">Dashboard</a>
-        <a href="watchlist.html">Watchlist</a>
-        <a href="hot-stocks.html">Hot Stocks</a>
-        <a class="active" href="articles.html">Articles</a>
-      </nav>
-    </header>
-
+  <body data-page="articles" data-root="..">
+    <header class="site-header" id="siteHeader"></header>
     <main class="page-shell">
-      <section class="page-hero glass-card">
+      <section class="page-hero">
         <div>
-          <p class="eyebrow">Simplified market reading</p>
-          <h1>Articles Top 100</h1>
-          <p>
-            Mock AI summaries that rephrase market coverage, surface important
-            context, and map general expected impact to related stocks.
-          </p>
+          <p class="eyebrow">Articles Top 100</p>
+          <h1>AI-Simplified Articles</h1>
+          <p>Market stories rewritten in simpler language with quotes, AI Outlook, related stocks, and watchlist actions.</p>
         </div>
-        <div class="article-stat-card">
-          <span>Personalized feed</span>
-          <strong>Top 100-ready</strong>
-          <small>Showing a compact prototype list</small>
-        </div>
+        <div class="article-card glass-card"><p class="eyebrow">Top Take</p><h3>AI leaders still dominate attention, but the risk filter is getting stricter.</h3></div>
       </section>
-
       <section class="section-block">
-        <div class="section-heading compact">
-          <div>
-            <h2>AI-Simplified Article Feed</h2>
-            <p>Expand any card for a longer plain-English summary.</p>
-          </div>
-        </div>
+        <div class="section-heading"><div><h2>Top 100 Feed Prototype</h2><p>Compact mock list structured to scale later.</p></div></div>
         <div class="article-list" id="articlesList"></div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>Article summaries are mock examples for education only. Not financial advice.</p>
-    </footer>
-
-    <script src="../js/data.js"></script>
-    <script src="../js/app.js"></script>
+    <nav class="bottom-nav" id="bottomNav"></nav>
+    <footer class="site-footer" id="siteFooter"></footer>
+    <script src="../js/mockData.js"></script><script src="../js/ui.js"></script><script src="../js/navigation.js"></script><script src="../js/watchlist.js"></script><script src="../js/search.js"></script><script src="../js/smart-search.js"></script><script src="../js/stocks.js"></script><script src="../js/articles.js"></script><script src="../js/app.js"></script>
   </body>
 </html>

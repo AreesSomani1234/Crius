@@ -1,0 +1,66 @@
+window.CriusWatchlist = {
+  renderHome() {
+    const data = window.CRIUS_DATA;
+    const ui = window.CriusUI;
+    const carousel = document.querySelector("#watchlistCarousel");
+    const hotPreview = document.querySelector("#hotPreviewGrid");
+    const articles = document.querySelector("#articlePreviewGrid");
+    const skeleton = document.querySelector("#watchlistSkeleton");
+    const empty = document.querySelector("#watchlistEmpty");
+
+    if (carousel) {
+      const favorites = ui.getFavorites();
+      const watchlist = data.stocks.filter((stock) => favorites.includes(stock.ticker)).slice(0, 4);
+      skeleton.hidden = true;
+      empty.hidden = watchlist.length > 0;
+      carousel.innerHTML = [
+        ...watchlist.map((stock) => ui.stockCard(stock, "pages/watchlist.html")),
+        `<div class="carousel-divider">Trending Now</div>`,
+        ...data.stocks.slice(4, 8).map((stock) => ui.stockCard(stock, "pages/hot-stocks.html"))
+      ].join("");
+    }
+
+    if (hotPreview) {
+      hotPreview.innerHTML = data.stocks.slice(1, 7).map((stock) => ui.trendCard(stock, "pages/hot-stocks.html")).join("");
+    }
+
+    if (articles) {
+      articles.innerHTML = data.articles.slice(0, 4).map((article) => `<a href="pages/articles.html">${ui.articleCard(article)}</a>`).join("");
+    }
+  },
+
+  renderPage() {
+    const data = window.CRIUS_DATA;
+    const ui = window.CriusUI;
+    const table = document.querySelector("#watchlistTable");
+    const count = document.querySelector("#watchlistCount");
+    const empty = document.querySelector("#watchlistEmpty");
+    const query = (document.querySelector("#watchlistSearch")?.value || "").toLowerCase();
+    const stocks = data.stocks.filter((stock) => `${stock.ticker} ${stock.company} ${stock.sector}`.toLowerCase().includes(query));
+
+    if (table) {
+      table.innerHTML = stocks.map((stock) => `
+        <a class="data-row glass-card" href="stock-detail.html?ticker=${stock.ticker}">
+          <div><strong>${stock.ticker}</strong><span>${stock.company}</span></div>
+          <div><strong>${ui.formatPrice(stock.price)}</strong><span class="${stock.changePercent >= 0 ? "positive-text" : "negative-text"}">${ui.formatChange(stock.changePercent, stock.changeDollar)}</span></div>
+          <div><strong>${stock.score}/100</strong><span>${stock.rating}</span></div>
+          <div><strong>${stock.risk}</strong><span>${stock.status}</span></div>
+        </a>
+      `).join("");
+      count.textContent = `Showing ${stocks.length} stocks`;
+      empty.hidden = stocks.length > 0;
+    }
+
+    const previous = document.querySelector("#previousSearches");
+    if (previous) {
+      previous.innerHTML = data.smartSearches.map((item) => `
+        <article class="scenario-card glass-card">
+          <p class="eyebrow">${item.created}</p>
+          <h3>${item.title}</h3>
+          <p>${item.summary}</p>
+          <div class="ticker-row">${item.tickers.map((ticker) => `<span class="ticker-pill">${ticker}</span>`).join("")}</div>
+        </article>
+      `).join("");
+    }
+  }
+};

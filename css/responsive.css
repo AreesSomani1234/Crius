@@ -1,0 +1,88 @@
+@media (max-width: 1120px) {
+  .grid-4,
+  .trend-grid.wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-hero,
+  .hot-panel,
+  .stock-detail-layout,
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  body {
+    padding-bottom: 96px;
+  }
+
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .top-nav {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+
+  .top-nav a {
+    white-space: nowrap;
+  }
+
+  .grid-2,
+  .grid-3,
+  .trend-grid,
+  .article-grid,
+  .lookup-grid,
+  .smart-results,
+  .search-options,
+  .page-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading,
+  .impact-line,
+  .stock-detail-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bottom-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .bottom-nav a {
+    min-width: 82px;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-shell,
+  .site-header,
+  .site-footer,
+  .bottom-nav {
+    width: min(100% - 22px, var(--content));
+  }
+
+  .dashboard-hero,
+  .section-block,
+  .page-hero {
+    border-radius: 22px;
+    padding: 20px;
+  }
+
+  .hero-metrics,
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .watchlist-carousel {
+    grid-auto-columns: minmax(260px, 88%);
+  }
+
+  .header-actions .optional {
+    display: none;
+  }
+}

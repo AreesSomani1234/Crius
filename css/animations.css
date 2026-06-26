@@ -1,0 +1,55 @@
+.glass-card,
+.section-block,
+.stock-card,
+.trend-card,
+.article-card,
+.lookup-card,
+.profile-card,
+.scenario-card {
+  transition: transform var(--ease), border-color var(--ease), background var(--ease);
+}
+
+.stock-card:hover,
+.trend-card:hover,
+.article-card:hover,
+.lookup-card:hover,
+.profile-card:hover,
+.scenario-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(52, 226, 138, 0.34);
+}
+
+button:active,
+.button:active,
+.text-link:active,
+.stock-card:active {
+  transform: scale(0.98);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(74, 168, 255, 0.38);
+  outline-offset: 3px;
+}
+
+.skeleton-card {
+  min-height: 240px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent),
+    rgba(255, 255, 255, 0.05);
+  background-size: 220px 100%, 100% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -220px 0, 0 0;
+  }
+
+  to {
+    background-position: 320px 0, 0 0;
+  }
+}

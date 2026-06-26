@@ -1,0 +1,245 @@
+.dashboard-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.75fr);
+  gap: 24px;
+  padding: clamp(28px, 5vw, 64px);
+}
+
+.dashboard-hero h1,
+.page-hero h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.dashboard-copy {
+  max-width: 760px;
+  margin-bottom: 28px;
+  font-size: clamp(1rem, 2vw, 1.28rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hero-metric {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.hero-metric strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.45rem;
+}
+
+.watchlist-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(292px, 1fr);
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.watchlist-carousel .stock-card {
+  min-height: 260px;
+  scroll-snap-align: start;
+}
+
+.carousel-divider {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  padding: 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--muted);
+  scroll-snap-align: center;
+}
+
+.hot-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 16px;
+}
+
+.hot-feature {
+  min-height: 100%;
+  padding: 24px;
+}
+
+.trend-grid,
+.article-grid,
+.lookup-grid,
+.smart-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.trend-grid.wide {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.trend-card {
+  position: relative;
+  min-height: 286px;
+}
+
+.trend-card .favorite-button,
+.article-card .favorite-button {
+  margin-top: 14px;
+}
+
+.page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: 24px;
+  align-items: end;
+  padding: clamp(24px, 4vw, 46px);
+}
+
+.page-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+}
+
+.search-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.search-option {
+  min-height: 260px;
+  padding: 28px;
+  border-radius: var(--radius-xl);
+}
+
+.search-option h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.recent-searches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stock-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+}
+
+.stock-detail-header {
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.chart-card {
+  min-height: 300px;
+}
+
+.chart-surface {
+  width: 100%;
+  height: 250px;
+  margin-top: 18px;
+}
+
+.scenario-timeline {
+  display: grid;
+  gap: 12px;
+}
+
+.timeline-item {
+  padding-left: 16px;
+  border-left: 2px solid var(--purple);
+}
+
+.wizard-progress {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.wizard-progress span {
+  display: block;
+  height: 100%;
+  width: 20%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  transition: width var(--ease);
+}
+
+.wizard-card {
+  min-height: 300px;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.choice-button {
+  padding: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.065);
+  color: var(--text);
+  font-weight: 800;
+}
+
+.choice-button.active {
+  color: var(--green);
+  background: var(--green-soft);
+  border-color: rgba(52, 226, 138, 0.42);
+}
+
+.wizard-actions {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.avatar {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.settings-list {
+  display: grid;
+  gap: 10px;
+}
+
+.settings-list article {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.055);
+}
