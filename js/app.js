@@ -1,4 +1,6 @@
 window.CriusApp = {
+  sectorOptions: ["AI infrastructure", "Cloud", "Consumer platforms", "Semiconductors", "Electric Vehicles", "Digital Advertising", "Streaming Media", "AI Software", "Search and Cloud"],
+
   render() {
     const page = document.body.dataset.page;
     window.CriusNavigation.render();
@@ -17,6 +19,21 @@ window.CriusApp = {
     if (page === "compare") this.renderCompare();
 
     window.CriusUI.bindCommonActions();
+  },
+
+  getPreferredSectors() {
+    const saved = localStorage.getItem("criusPreferredSectors");
+    if (!saved) return window.CRIUS_DATA.user.favoriteSectors;
+    try {
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) && parsed.length ? parsed : window.CRIUS_DATA.user.favoriteSectors;
+    } catch {
+      return window.CRIUS_DATA.user.favoriteSectors;
+    }
+  },
+
+  savePreferredSectors(sectors) {
+    localStorage.setItem("criusPreferredSectors", JSON.stringify(sectors));
   },
 
   renderHotStocks() {
@@ -46,7 +63,7 @@ window.CriusApp = {
 
     const favorites = window.CriusUI.getFavorites();
     const savedSearches = window.CRIUS_DATA.smartSearches;
-    const sectors = user.favoriteSectors;
+    const sectors = this.getPreferredSectors();
 
     profile.innerHTML = `
       <div class="profile-dashboard">
@@ -79,8 +96,20 @@ window.CriusApp = {
 
             <article class="profile-panel glass-card">
               <div class="section-heading"><div><h2>Preferred Sectors</h2><p>Used by Smart Search and stock ranking screens.</p></div></div>
-              <div class="tag-row">${sectors.map((sector) => `<span class="tag-pill active-sector">${sector}</span>`).join("")}</div>
-              <button class="button secondary" type="button">Edit sector list</button>
+              <div class="tag-row" id="sectorPills">${sectors.map((sector) => `<span class="tag-pill active-sector">${sector}</span>`).join("")}</div>
+              <button class="button secondary" type="button" id="editSectorsButton">Edit sector list</button>
+              <div class="sector-editor" id="sectorEditor" hidden>
+                ${this.sectorOptions.map((sector) => `
+                  <label class="sector-option">
+                    <input type="checkbox" value="${sector}" ${sectors.includes(sector) ? "checked" : ""} />
+                    <span>${sector}</span>
+                  </label>
+                `).join("")}
+                <div class="sector-editor-actions">
+                  <button class="button primary" type="button" id="saveSectorsButton">Save sectors</button>
+                  <button class="button secondary" type="button" id="cancelSectorsButton">Cancel</button>
+                </div>
+              </div>
             </article>
           </div>
 
@@ -111,6 +140,30 @@ window.CriusApp = {
         </section>
       </div>
     `;
+
+    this.bindProfileControls();
+  },
+
+  bindProfileControls() {
+    const editor = document.querySelector("#sectorEditor");
+    const editButton = document.querySelector("#editSectorsButton");
+    const cancelButton = document.querySelector("#cancelSectorsButton");
+    const saveButton = document.querySelector("#saveSectorsButton");
+
+    editButton?.addEventListener("click", () => {
+      editor.hidden = false;
+      editButton.hidden = true;
+    });
+
+    cancelButton?.addEventListener("click", () => {
+      this.renderProfile();
+    });
+
+    saveButton?.addEventListener("click", () => {
+      const selected = [...document.querySelectorAll("#sectorEditor input:checked")].map((input) => input.value);
+      this.savePreferredSectors(selected.length ? selected : window.CRIUS_DATA.user.favoriteSectors);
+      this.renderProfile();
+    });
   },
 
   renderAuthPage() {
