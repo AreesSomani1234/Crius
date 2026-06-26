@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crius | Watchlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body data-page="watchlist">
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="Crius home">
+        <span class="brand-mark">C</span>
+        <span>Crius</span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="../index.html">Dashboard</a>
+        <a class="active" href="watchlist.html">Watchlist</a>
+        <a href="hot-stocks.html">Hot Stocks</a>
+        <a href="articles.html">Articles</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-hero glass-card">
+        <div>
+          <p class="eyebrow">Portfolio intelligence</p>
+          <h1>Full Watchlist</h1>
+          <p>
+            Track mock price movement, educational ratings, risk, and status
+            signals for the stocks you care about.
+          </p>
+        </div>
+        <div class="search-box">
+          <label for="watchlistSearch">Search watchlist</label>
+          <input id="watchlistSearch" type="search" placeholder="Search ticker or company" />
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading compact">
+          <div>
+            <h2>Tracked Stocks</h2>
+            <p id="watchlistCount">Showing all stocks</p>
+          </div>
+        </div>
+        <div class="data-table" id="watchlistTable"></div>
+        <p class="empty-state" id="watchlistEmpty" hidden>No watchlist stocks match that search.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Mock data only. Educational use, not financial advice.</p>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
