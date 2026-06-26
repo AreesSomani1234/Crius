@@ -47,7 +47,6 @@ window.CriusStocks = {
     const labels = coords.map(({ x, y, point }, index) => {
       const label = index === coords.length - 1 ? "Now" : `Point ${index + 1}`;
       const tooltipWidth = 108;
-      const tooltipHeight = 30;
       const boxX = Math.min(Math.max(x - tooltipWidth / 2, padLeft), width - padRight - tooltipWidth);
       const boxY = Math.max(y - 44, padTop + 6);
       return `
@@ -55,7 +54,6 @@ window.CriusStocks = {
           <circle class="chart-hit-area" cx="${x}" cy="${y}" r="19"></circle>
           <circle class="chart-dot" cx="${x}" cy="${y}" r="6"></circle>
           <g class="chart-tooltip-group">
-            <rect class="chart-tooltip-box" x="${boxX}" y="${boxY}" width="${tooltipWidth}" height="${tooltipHeight}" rx="8"></rect>
             <text class="chart-tooltip" x="${boxX + 10}" y="${boxY + 20}">${label}: $${point.toFixed(2)}</text>
           </g>
         </g>
@@ -70,13 +68,9 @@ window.CriusStocks = {
           <button class="chart-tab active" type="button">1M</button>
           <button class="chart-tab" type="button">1Y</button>
         </div>
-        <div class="chart-actions" aria-label="Chart zoom controls">
-          <button class="chart-action" type="button" data-chart-zoom="out">− Zoom</button>
-          <button class="chart-action" type="button" data-chart-zoom="in">+ Zoom</button>
-        </div>
         <div class="chart-change ${stock.changePercent >= 0 ? "positive-text" : "negative-text"}">${stock.changePercent >= 0 ? "+" : ""}${stock.changePercent.toFixed(2)}%</div>
       </div>
-      <svg class="chart-surface interactive-chart" viewBox="0 0 ${width} ${height}" data-base-viewbox="0 0 ${width} ${height}" data-zoomed-viewbox="${padLeft - 12} ${padTop - 10} ${plotW + 32} ${plotH + 84}" aria-label="${stock.ticker} mock price trend chart">
+      <svg class="chart-surface interactive-chart" viewBox="0 0 ${width} ${height}" aria-label="${stock.ticker} mock price trend chart">
         <defs>
           <linearGradient id="chartLineGradient-${stock.ticker}" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0%" stop-color="var(--blue)"></stop>
@@ -104,18 +98,6 @@ window.CriusStocks = {
   },
 
   bindChartControls() {
-    const chart = document.querySelector(".interactive-chart");
-    if (!chart) return;
-
-    document.querySelectorAll("[data-chart-zoom]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const zoomIn = button.dataset.chartZoom === "in";
-        chart.setAttribute("viewBox", zoomIn ? chart.dataset.zoomedViewbox : chart.dataset.baseViewbox);
-        document.querySelectorAll("[data-chart-zoom]").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-      });
-    });
-
     document.querySelectorAll(".chart-tab").forEach((button) => {
       button.addEventListener("click", () => {
         document.querySelectorAll(".chart-tab").forEach((item) => item.classList.remove("active"));
