@@ -40,11 +40,11 @@ window.CriusWatchlist = {
 
     if (table) {
       table.innerHTML = stocks.map((stock) => `
-        <a class="data-row glass-card" href="stock-detail.html?ticker=${stock.ticker}">
-          <div><strong>${stock.ticker}</strong><span>${stock.company}</span></div>
-          <div><strong>${ui.formatPrice(stock.price)}</strong><span class="${stock.changePercent >= 0 ? "positive-text" : "negative-text"}">${ui.formatChange(stock.changePercent, stock.changeDollar)}</span></div>
-          <div><strong>${stock.score}/100</strong><span>${stock.rating}</span></div>
-          <div><strong>${stock.risk}</strong><span>${stock.status}</span></div>
+        <a class="data-row watchlist-row glass-card" href="stock-detail.html?ticker=${stock.ticker}">
+          <div class="watchlist-cell stock-identity"><strong>${stock.ticker}</strong><span>${stock.company}</span></div>
+          <div class="watchlist-cell stock-price"><strong>${ui.formatPrice(stock.price)}</strong><span class="${stock.changePercent >= 0 ? "positive-text" : "negative-text"}">${ui.formatChange(stock.changePercent, stock.changeDollar)}</span></div>
+          <div class="watchlist-cell stock-score"><strong>${stock.score}/100</strong><span>${stock.rating}</span></div>
+          <div class="watchlist-cell stock-risk"><strong>${stock.risk}</strong><span>${stock.status}</span></div>
         </a>
       `).join("");
       count.textContent = `Showing ${stocks.length} stocks`;
