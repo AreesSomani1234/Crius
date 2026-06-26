@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crius | Educational Stock Ratings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Educational stock rating</p>
+          <h1>Crius</h1>
+          <p class="hero-copy">
+            Search mock stocks, compare simple scores, and build a starter
+            watchlist.
+          </p>
+        </div>
+        <div class="market-pill">
+          <span class="pulse-dot"></span>
+          <span>Mock market</span>
+        </div>
+      </section>
+
+      <section class="search-panel" aria-label="Stock search">
+        <label for="stockSearch">Search stocks</label>
+        <div class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="stockSearch"
+            type="search"
+            placeholder="Search ticker or company"
+            autocomplete="off"
+          />
+        </div>
+      </section>
+
+      <section class="featured-card" aria-live="polite">
+        <div class="featured-top">
+          <div>
+            <p class="ticker" id="featuredTicker">AAPL</p>
+            <h2 id="featuredCompany">Apple Inc.</h2>
+          </div>
+          <span class="rating-badge" id="featuredRating">Strong</span>
+        </div>
+
+        <div class="score-row">
+          <div>
+            <p class="score-label">Crius score</p>
+            <p class="score-number"><span id="featuredScore">88</span><span>/100</span></p>
+          </div>
+          <div class="score-ring" id="scoreRing">
+            <span id="scoreRingText">88</span>
+          </div>
+        </div>
+
+        <p class="stock-summary" id="featuredExplanation">
+          Strong mock fundamentals with balanced risk and steady momentum.
+        </p>
+
+        <div class="risk-strip">
+          <span>Risk level</span>
+          <strong id="featuredRisk">Low</strong>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>Score breakdown</h2>
+          <span id="breakdownTicker">AAPL</span>
+        </div>
+        <div class="breakdown-grid">
+          <article class="mini-card">
+            <span>Momentum</span>
+            <strong id="momentumScore">91</strong>
+          </article>
+          <article class="mini-card">
+            <span>Stability</span>
+            <strong id="stabilityScore">84</strong>
+          </article>
+          <article class="mini-card">
+            <span>Growth</span>
+            <strong id="growthScore">89</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block watchlist-section">
+        <div class="section-heading">
+          <h2>Watchlist</h2>
+          <span id="stockCount">4 stocks</span>
+        </div>
+        <div class="watchlist" id="watchlist"></div>
+        <p class="empty-state" id="emptyState" hidden>No mock stocks match that search.</p>
+      </section>
+
+      <p class="disclaimer">
+        Mock data for education only. Crius ratings are not financial advice.
+      </p>
+
+      <nav class="bottom-nav" aria-label="App navigation">
+        <button class="nav-button active" type="button" data-nav="Home">
+          <span>⌂</span>
+          Home
+        </button>
+        <button class="nav-button" type="button" data-nav="Search">
+          <span>⌕</span>
+          Search
+        </button>
+        <button class="nav-button" type="button" data-nav="Watchlist">
+          <span>◇</span>
+          Watchlist
+        </button>
+        <button class="nav-button" type="button" data-nav="Profile">
+          <span>○</span>
+          Profile
+        </button>
+      </nav>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
