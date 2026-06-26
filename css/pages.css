@@ -217,8 +217,15 @@
 
 .profile-grid {
   display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
   gap: 18px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+.profile-card {
+  padding: 20px;
+  border-radius: var(--radius-lg);
 }
 
 .avatar {
