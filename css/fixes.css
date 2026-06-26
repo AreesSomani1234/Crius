@@ -112,7 +112,6 @@
 
 .chart-toolbar,
 .chart-tabs,
-.chart-actions,
 .chart-stats-row {
   display: flex;
   align-items: center;
@@ -124,13 +123,11 @@
   margin: 8px 0 12px;
 }
 
-.chart-tabs,
-.chart-actions {
+.chart-tabs {
   gap: 8px;
 }
 
-.chart-tab,
-.chart-action {
+.chart-tab {
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 7px 11px;
@@ -140,9 +137,7 @@
 }
 
 .chart-tab.active,
-.chart-tab:hover,
-.chart-action.active,
-.chart-action:hover {
+.chart-tab:hover {
   background: var(--green-soft);
   color: var(--green);
   border-color: rgba(52, 226, 138, 0.42);
@@ -153,7 +148,8 @@
 }
 
 .interactive-chart {
-  height: 285px;
+  width: 100%;
+  height: clamp(260px, 32vw, 340px);
   padding: 0;
   border: 0;
   border-radius: 0;
