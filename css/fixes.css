@@ -103,11 +103,12 @@
 }
 
 .chart-card {
-  min-height: 500px;
+  min-height: 560px;
 }
 
 .chart-toolbar,
 .chart-tabs,
+.chart-actions,
 .chart-stats-row {
   display: flex;
   align-items: center;
@@ -119,11 +120,13 @@
   margin: 10px 0 16px;
 }
 
-.chart-tabs {
+.chart-tabs,
+.chart-actions {
   gap: 8px;
 }
 
-.chart-tab {
+.chart-tab,
+.chart-action {
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 8px 12px;
@@ -133,7 +136,9 @@
 }
 
 .chart-tab.active,
-.chart-tab:hover {
+.chart-tab:hover,
+.chart-action.active,
+.chart-action:hover {
   background: var(--green-soft);
   color: var(--green);
   border-color: rgba(52, 226, 138, 0.42);
@@ -144,7 +149,7 @@
 }
 
 .interactive-chart {
-  height: 285px;
+  height: 350px;
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.075);
   border-radius: var(--radius-md);
@@ -152,6 +157,7 @@
     radial-gradient(circle at 70% 30%, rgba(52, 226, 138, 0.12), transparent 26%),
     rgba(255, 255, 255, 0.025);
   color: var(--green);
+  overflow: visible;
 }
 
 .chart-grid-line {
@@ -179,20 +185,28 @@
   cursor: pointer;
 }
 
-.chart-tooltip {
+.chart-tooltip-group {
   opacity: 0;
   pointer-events: none;
-  fill: var(--text);
-  font-size: 12px;
-  font-weight: 800;
-  paint-order: stroke;
-  stroke: rgba(7, 13, 22, 0.9);
-  stroke-width: 4px;
   transition: opacity var(--ease);
 }
 
-.chart-point:hover .chart-tooltip,
-.chart-point:focus .chart-tooltip {
+.chart-tooltip-box {
+  fill: rgba(7, 13, 22, 0.96);
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 1.2;
+}
+
+.chart-tooltip {
+  fill: var(--text);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.chart-point:hover .chart-tooltip-group,
+.chart-point:focus .chart-tooltip-group {
   opacity: 1;
 }
 
@@ -200,6 +214,32 @@
 .chart-point:focus .chart-dot {
   fill: var(--green);
   stroke: white;
+}
+
+.chart-axis-label,
+.chart-axis-title {
+  fill: var(--muted);
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.chart-axis-label {
+  font-size: 11px;
+}
+
+.y-axis-label {
+  text-anchor: end;
+}
+
+.x-axis-label,
+.x-axis-title {
+  text-anchor: middle;
+}
+
+.chart-axis-title {
+  font-size: 11px;
+  text-transform: uppercase;
 }
 
 .chart-stats-row {
