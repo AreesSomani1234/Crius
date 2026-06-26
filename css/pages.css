@@ -87,7 +87,7 @@
 .smart-results {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .trend-grid.wide {
@@ -113,7 +113,7 @@
 }
 
 .page-hero + * {
-  margin-top: 24px;
+  margin-top: 26px;
 }
 
 .page-hero h1 {
@@ -123,7 +123,7 @@
 .search-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .search-option {
@@ -252,6 +252,56 @@
   padding: 16px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.055);
+}
+
+.article-list {
+  gap: 16px;
+}
+
+.article-list .data-row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 16px;
+}
+
+.article-list .data-row > strong {
+  align-self: center;
+  color: var(--text);
+  font-size: 0.86rem;
+}
+
+.article-list .data-row > div,
+.article-list .article-card {
+  width: 100%;
+}
+
+.article-list .article-card {
+  min-height: auto;
+  padding: 22px;
+}
+
+.article-list .impact-line {
+  display: grid;
+  grid-template-columns: minmax(90px, 120px) minmax(0, 1fr);
+  align-items: start;
+}
+
+.filter-control select {
+  color-scheme: dark;
+  color: var(--text);
+}
+
+.filter-control select option {
+  background: #111821;
+  color: var(--text);
+}
+
+.filter-control select option:checked,
+.filter-control select option:hover {
+  background: var(--green-soft);
+  color: var(--green);
 }
 
 .header-actions {
