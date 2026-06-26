@@ -10,6 +10,11 @@
   .profile-grid {
     grid-template-columns: 1fr;
   }
+
+  .watchlist-row {
+    grid-template-columns: minmax(180px, 1.2fr) minmax(120px, 0.8fr) minmax(100px, 0.7fr) minmax(190px, 1fr);
+    gap: 22px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -44,6 +49,15 @@
     flex-direction: column;
   }
 
+  .watchlist-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 18px;
+  }
+
+  .stock-price,
+  .stock-score {
+    text-align: left;
+  }
 }
 
 @media (max-width: 560px) {
@@ -61,12 +75,17 @@
   }
 
   .hero-metrics,
-  .choice-grid {
+  .choice-grid,
+  .watchlist-row {
     grid-template-columns: 1fr;
   }
 
   .watchlist-carousel {
     grid-auto-columns: minmax(260px, 88%);
+  }
+
+  .watchlist-row {
+    padding: 16px;
   }
 
   .header-actions .optional {
