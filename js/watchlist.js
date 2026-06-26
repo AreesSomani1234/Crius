@@ -10,14 +10,13 @@ window.CriusWatchlist = {
 
     if (carousel) {
       const favorites = ui.getFavorites();
-      const watchlist = data.stocks.filter((stock) => favorites.includes(stock.ticker)).slice(0, 4);
+      const favoriteStocks = data.stocks.filter((stock) => favorites.includes(stock.ticker)).slice(0, 4);
+      const backupStocks = data.stocks.filter((stock) => !favorites.includes(stock.ticker)).slice(0, 4);
+      const watchlist = [...favoriteStocks, ...backupStocks].slice(0, 4);
+
       skeleton.hidden = true;
       empty.hidden = watchlist.length > 0;
-      carousel.innerHTML = [
-        ...watchlist.map((stock) => ui.stockCard(stock, "pages/watchlist.html")),
-        `<div class="carousel-divider">Trending Now</div>`,
-        ...data.stocks.slice(4, 8).map((stock) => ui.stockCard(stock, "pages/hot-stocks.html"))
-      ].join("");
+      carousel.innerHTML = watchlist.map((stock) => ui.stockCard(stock, "pages/watchlist.html")).join("");
     }
 
     if (hotPreview) {
