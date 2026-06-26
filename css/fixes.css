@@ -19,20 +19,24 @@
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 100;
   padding: 10px 0;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(74, 168, 255, 0.18), transparent 34%),
-    radial-gradient(circle at 88% 0%, rgba(169, 135, 255, 0.16), transparent 34%),
-    rgba(7, 13, 22, 0.88);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
+  background: transparent;
+  border-bottom: 0;
+  backdrop-filter: none;
 }
 
 .site-header .top-nav {
-  justify-self: center;
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  z-index: 200;
+  justify-self: auto;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  transform: translateX(-50%);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
 }
 
 .hot-panel {
@@ -123,8 +127,8 @@
   }
 
   .site-header .top-nav {
-    grid-column: 1 / -1;
-    justify-self: stretch;
+    top: 10px;
+    overflow-x: auto;
   }
 
   .hot-panel .trend-grid {
