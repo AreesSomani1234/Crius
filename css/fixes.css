@@ -194,9 +194,9 @@
 }
 
 .chart-tooltip-box {
-  fill: rgba(7, 13, 22, 0.96);
-  stroke: rgba(255, 255, 255, 0.6);
-  stroke-width: 1.2;
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 0;
 }
 
 .chart-tooltip {
@@ -205,6 +205,9 @@
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0;
+  paint-order: stroke;
+  stroke: rgba(7, 13, 22, 0.9);
+  stroke-width: 3px;
 }
 
 .chart-point:hover .chart-tooltip-group,
