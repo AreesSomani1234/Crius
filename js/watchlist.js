@@ -13,10 +13,18 @@ window.CriusWatchlist = {
       const favoriteStocks = data.stocks.filter((stock) => favorites.includes(stock.ticker)).slice(0, 4);
       const backupStocks = data.stocks.filter((stock) => !favorites.includes(stock.ticker)).slice(0, 4);
       const watchlist = [...favoriteStocks, ...backupStocks].slice(0, 4);
+      const cards = watchlist.map((stock) => ui.stockCard(stock, "pages/watchlist.html")).join("");
 
       skeleton.hidden = true;
       empty.hidden = watchlist.length > 0;
-      carousel.innerHTML = watchlist.map((stock) => ui.stockCard(stock, "pages/watchlist.html")).join("");
+      carousel.innerHTML = watchlist.length
+        ? `
+          <div class="watchlist-track" aria-label="Moving watchlist stocks">
+            <div class="watchlist-loop-group">${cards}</div>
+            <div class="watchlist-loop-group" aria-hidden="true">${cards}</div>
+          </div>
+        `
+        : "";
     }
 
     if (hotPreview) {
