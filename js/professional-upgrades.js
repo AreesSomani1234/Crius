@@ -30,7 +30,6 @@
         const favorites = helpers.getFavorites();
         const favoriteStocks = store.stocks.filter((stock) => favorites.includes(stock.ticker));
         const topConfidence = [...store.stocks].sort((a, b) => b.confidence - a.confidence)[0];
-        const watchlistScore = avg(favoriteStocks, "score") || avg(store.stocks.slice(0, 4), "score");
 
         ensureAfter(".dashboard-hero", "homeInsightGrid", `
           <section class="home-insight-grid" id="homeInsightGrid">
@@ -46,7 +45,7 @@
             </a>
             <a class="insight-card glass-card" href="pages/watchlist.html">
               <p class="eyebrow">Watchlist summary</p>
-              <h3>${favoriteStocks.length || 0} saved stocks · ${watchlistScore}/100 average score</h3>
+              <h3>${favoriteStocks.length || 0} saved stocks</h3>
               <span class="ticker-pill">${riskMix(favoriteStocks)} risk mix</span>
             </a>
           </section>
@@ -105,7 +104,6 @@
         if (metrics) {
           metrics.innerHTML = `
             <article class="stat-card glass-card"><span>Saved Stocks</span><strong>${favoriteStocks.length}</strong></article>
-            <article class="stat-card glass-card"><span>Average Score</span><strong>${avg(favoriteStocks, "score") || "—"}${favoriteStocks.length ? "/100" : ""}</strong></article>
             <article class="stat-card glass-card"><span>Best Stock</span><strong>${best ? best.ticker : "—"}</strong></article>
             <article class="stat-card glass-card"><span>Highest Risk</span><strong>${riskiest ? `${riskiest.ticker} · ${riskiest.risk}` : "—"}</strong></article>
             <article class="stat-card glass-card"><span>Top Sector</span><strong>${topSector}</strong></article>
