@@ -44,6 +44,7 @@ window.CriusWatchlist = {
       table.innerHTML = stocks.map((stock) => `
         <a class="data-row watchlist-row glass-card" href="stock-detail.html?ticker=${stock.ticker}">
           <div class="watchlist-cell stock-identity"><strong>${stock.ticker}</strong><span>${stock.company}</span></div>
+          <div class="watchlist-cell watchlist-chart">${ui.sparkline(stock.sparkline)}</div>
           <div class="watchlist-cell stock-price"><strong>${ui.formatPrice(stock.price)}</strong><span class="${stock.changePercent >= 0 ? "positive-text" : "negative-text"}">${ui.formatChange(stock.changePercent, stock.changeDollar)}</span></div>
           <div class="watchlist-cell stock-score"><strong>${stock.score}/100</strong><span>${stock.rating}</span></div>
           <div class="watchlist-cell stock-risk"><strong>${stock.risk}</strong><span>${stock.status}</span></div>
