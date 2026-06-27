@@ -4,7 +4,6 @@ window.CriusNavigation = {
     { label: "Search", href: "pages/search.html", page: "search" },
     { label: "Watchlist", href: "pages/watchlist.html", page: "watchlist" },
     { label: "Markets", href: "pages/markets.html", page: "markets" },
-    { label: "Articles", href: "pages/articles.html", page: "articles" },
     { label: "Profile", href: "pages/profile.html", page: "profile" }
   ],
   resolveHref(href){const root=document.body.dataset.root||".";if(root===".")return href;if(href==="index.html")return"../index.html";return href.replace("pages/","");},
