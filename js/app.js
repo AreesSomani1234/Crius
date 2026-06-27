@@ -173,6 +173,38 @@ window.CriusApp = {
     const mode = document.body.dataset.authMode || "login";
     const isSignup = mode === "signup";
     const isForgot = mode === "forgot";
+    const isGoogle = mode === "google";
+
+    if (isGoogle) {
+      target.innerHTML = `
+        <section class="auth-shell">
+          <div class="auth-copy section-block">
+            <p class="eyebrow">Secure account access</p>
+            <h1>Sign in with Google</h1>
+            <p>Use your Google account to instantly access your Crius dashboard, watchlist, and AI stock reports.</p>
+            <div class="auth-benefits">
+              <span>Saved watchlists</span>
+              <span>AI stock reports</span>
+              <span>Risk profile matching</span>
+            </div>
+          </div>
+          <div class="auth-card glass-card">
+            <div class="google-auth-block">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M47.5 24.5c0-1.6-.1-3.2-.4-4.7H24v8.9h13.1c-.6 3-2.3 5.5-4.8 7.2v6h7.7c4.5-4.2 7.1-10.3 7.1-17.4z" fill="#4285F4"/><path d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.7-6c-2.1 1.4-4.8 2.3-8.1 2.3-6.2 0-11.5-4.2-13.4-9.9H2.6v6.2C6.6 42.7 14.7 48 24 48z" fill="#34A853"/><path d="M10.6 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6v-6.2H2.6C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l8-6.2z" fill="#FBBC05"/><path d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.9 2.4 30.4 0 24 0 14.7 0 6.6 5.3 2.6 13.2l8 6.2C12.5 13.7 17.8 9.5 24 9.5z" fill="#EA4335"/></svg>
+              <p class="google-auth-hint">You'll be redirected to Google to choose your account.</p>
+              <button class="button google-signin full-width" type="button">Continue with Google</button>
+            </div>
+            <div class="auth-divider"><span>or</span></div>
+            <div class="auth-links" style="justify-content:center;">
+              <a href="login.html">Sign in with email instead</a>
+            </div>
+            <p class="ai-disclaimer">Prototype only. Google OAuth is not wired up yet.</p>
+          </div>
+        </section>
+      `;
+      return;
+    }
+
     const title = isSignup ? "Create your Crius account" : isForgot ? "Reset your password" : "Welcome back";
     const subtitle = isSignup
       ? "Start building a personalized AI stock research profile."
@@ -198,6 +230,7 @@ window.CriusApp = {
           ${isForgot ? "" : `<label>Password<input type="password" placeholder="••••••••" /></label>`}
           ${isSignup ? `<label>Investor type<select><option>Balanced growth</option><option>Dividend income</option><option>Aggressive growth</option><option>Low-risk compounder</option></select></label>` : ""}
           <button class="button primary" type="button">${isSignup ? "Create account" : isForgot ? "Send reset link" : "Login"}</button>
+          ${!isForgot ? `<div class="auth-divider"><span>or</span></div><a class="button google-signin" href="login-google.html"><svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M47.5 24.5c0-1.6-.1-3.2-.4-4.7H24v8.9h13.1c-.6 3-2.3 5.5-4.8 7.2v6h7.7c4.5-4.2 7.1-10.3 7.1-17.4z" fill="#4285F4"/><path d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.7-6c-2.1 1.4-4.8 2.3-8.1 2.3-6.2 0-11.5-4.2-13.4-9.9H2.6v6.2C6.6 42.7 14.7 48 24 48z" fill="#34A853"/><path d="M10.6 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6v-6.2H2.6C.9 16.6 0 20.2 0 24s.9 7.4 2.6 10.8l8-6.2z" fill="#FBBC05"/><path d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.9 2.4 30.4 0 24 0 14.7 0 6.6 5.3 2.6 13.2l8 6.2C12.5 13.7 17.8 9.5 24 9.5z" fill="#EA4335"/></svg>Continue with Google</a>` : ""}
           <div class="auth-links">
             ${isSignup ? `<a href="login.html">Already have an account?</a>` : `<a href="forgot-password.html">Forgot password?</a><a href="signup.html">Create account</a>`}
           </div>
