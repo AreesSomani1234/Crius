@@ -25,6 +25,7 @@ window.CriusApp = {
     const saved = localStorage.getItem("criusPreferredSectors");
     if (!saved) return window.CRIUS_DATA.user.favoriteSectors;
     try {
+      //test
       const parsed = JSON.parse(saved);
       return Array.isArray(parsed) && parsed.length ? parsed : window.CRIUS_DATA.user.favoriteSectors;
     } catch {
